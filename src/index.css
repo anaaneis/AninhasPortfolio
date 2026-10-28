@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Liga as variáveis às classes do Tailwind (bg-muted, text-foreground...) */
+@theme inline {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sticky-yellow: var(--sticky-yellow);
+  --color-sticky-pink: var(--sticky-pink);
+  --color-sticky-green: var(--sticky-green);
+  --color-sticky-blue: var(--sticky-blue);
+  --color-sticky-orange: var(--sticky-orange);
+  --color-sticky-violet: var(--sticky-violet);
+  --color-ink: var(--ink);
+  --color-cursor: var(--cursor);
+  --color-cursor-foreground: var(--cursor-foreground);
+  --color-folder: var(--folder);
+  --color-folder-tab: var(--folder-tab);
+  --shadow-sticky:
+    0 1px 2px oklch(0 0 0 / 0.08), 0 8px 18px -6px oklch(0 0 0 / 0.18);
+  --shadow-float:
+    0 2px 6px oklch(0 0 0 / 0.08), 0 16px 40px -12px oklch(0 0 0 / 0.25);
+}
+
+/* CORES */
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.965 0.003 90);
+  --foreground: oklch(0.2 0.01 270);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.01 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.01 270);
+  --primary: oklch(0.55 0.2 255);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.93 0.005 270);
+  --secondary-foreground: oklch(0.2 0.01 270);
+  --muted: oklch(0.93 0.005 270);
+  --muted-foreground: oklch(0.45 0.01 270);
+  --accent: oklch(0.93 0.06 255);
+  --accent-foreground: oklch(0.3 0.12 255);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.88 0.005 270);
+  --input: oklch(0.88 0.005 270);
+  --ring: oklch(0.55 0.2 255);
+  --ink: oklch(0.2 0.01 270);
+  --dot: oklch(0.8 0.005 270);
+  --sticky-yellow: oklch(0.93 0.13 95);
+  --sticky-pink: oklch(0.88 0.09 355);
+  --sticky-green: oklch(0.89 0.1 150);
+  --sticky-blue: oklch(0.88 0.07 230);
+  --sticky-orange: oklch(0.87 0.11 60);
+  --sticky-violet: oklch(0.86 0.07 300);
+  --cursor: oklch(0.6 0.21 20);
+  --cursor-foreground: oklch(1 0 0);
+  --folder: oklch(0.82 0.11 85);
+  --folder-tab: oklch(0.74 0.12 75);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* PEÇAS REUTILIZÁVEIS */
+@utility sticky-note {
+  box-shadow: var(--shadow-sticky);
+  border-radius: 4px;
+  color: var(--ink);
+}
+
+@utility section-frame {
+  position: relative;
+  border: 2px dashed var(--border);
+  border-radius: 1.25rem;
+  background: oklch(1 0 0 / 0.55);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0) rotate(-20deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fade-up {
+  to {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(18deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+@utility animate-pop {
+  animation: pop 0.35s ease-out both;
+}
+@utility animate-wave {
+  animation: wave 1.6s ease-in-out infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+/* Hides the real pointer, but only while the custom cursor is running.
+   !important is needed because some elements set their own cursor (like the grab hand on sticky notes) */
+.custom-cursor,
+.custom-cursor * {
+  cursor: none !important;
+}
