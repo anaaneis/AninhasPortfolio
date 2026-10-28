@@ -6,7 +6,7 @@ function Tools() {
   return (
     <Section id="tech" title="🧰 Tools & technologies" tab="bg-sticky-blue">
       <p className="mb-10 text-muted-foreground">
-        An affinity diagram of my tools - feel free to drag them around!
+        An affinity diagram of my tools - feel free to drag them around
       </p>
 
       {/* Three groups side by side on desktop, stacked on smaller screens */}
@@ -28,7 +28,7 @@ function Tools() {
               {group.group}
             </h3>
 
-            <ul className="grid gap-4 sm:grid-cols-2">
+            <ul className="grid gap-4 sm:grid-cols-2 ">
               {/* INNER .map(): one draggable note per tool in this group */}
               {group.items.map((tool, i) => (
                 <li key={tool.name}>
@@ -56,7 +56,7 @@ function Tools() {
                         )
                       )}
                     </span>
-                    <span className="text-sm font-bold leading-tight">
+                    <span className="font-hand text-2xl leading-none">
                       {tool.name}
                     </span>
                     <span className="-mt-1.5 text-[11px] text-ink/70">
