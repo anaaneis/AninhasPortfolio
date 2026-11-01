@@ -3,6 +3,9 @@ import Hi from "./components/sections/hi";
 import About from "./components/sections/about";
 import MultiCursor from "./components/board/multiCursor";
 import Tools from "./components/sections/tools";
+import Experience from "./components/sections/experience";
+import DrawLayer from "./components/board/drawlayer";
+import Contact from "./components/sections/contact";
 
 function App() {
   return (
@@ -19,6 +22,8 @@ function App() {
 
       <Navbar />
 
+      <DrawLayer />
+
       <main
         id="main"
         className="mx-auto flex max-w-6xl flex-col gap-20 px-4 pb-40 pt-14 sm:px-8"
@@ -27,6 +32,8 @@ function App() {
         {/* NEXT SECTIONS HERE */}
         <About />
         <Tools />
+        <Experience />
+        <Contact />
       </main>
     </>
   );
