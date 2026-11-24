@@ -1,5 +1,6 @@
 import Navbar from "./components/layout/navbar";
 import Hi from "./components/sections/hi";
+import Projects from "./components/sections/projects";
 import About from "./components/sections/about";
 import MultiCursor from "./components/board/multiCursor";
 import Tools from "./components/sections/tools";
@@ -30,6 +31,7 @@ function App() {
       >
         <Hi />
         {/* NEXT SECTIONS HERE */}
+        <Projects />
         <About />
         <Tools />
         <Experience />
